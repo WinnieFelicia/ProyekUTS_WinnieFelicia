@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Manajemen Tugas - Register, Login & Task</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="register-container" class="container">
+    <h2>Register</h2>
+    <input type="text" id="reg-username" placeholder="Username">
+    <input type="password" id="reg-password" placeholder="Password">
+    <button onclick="registerUser()">Register</button>
+    <p>Sudah punya akun? <a onclick="showLogin()">Login di sini</a></p>
+  </div>
+
+  <div id="login-container" class="container hidden">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+    <p>Belum punya akun? <a onclick="showRegister()">Register di sini</a></p>
+  </div>
+
+  <div id="task-container" class="container hidden">
+    <button onclick="logout()">Logout</button>
+
+    <h2>Tambah Tugas Baru</h2>
+    <input type="text" id="task-title" placeholder="Judul Tugas">
+    <input type="text" id="task-category" placeholder="Kategori">
+    <input type="date" id="task-deadline">
+    <button onclick="addTask()">Tambah Tugas</button>
+
+    <h2>Filter Tugas</h2>
+    <select id="filter" onchange="filterTasks()">
+      <option value="">Semua</option>
+      <option value="Kuliah">Kuliah</option>
+      <option value="Organisasi">Organisasi</option>
+      <option value="Pribadi">Pribadi</option>
+    </select>
+    <button onclick="filterTasks()">Filter</button>
+
+    <h2>Daftar Tugas</h2>
+    <table id="task-table" border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Judul</th>
+          <th>Kategori</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="task-list"></tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
