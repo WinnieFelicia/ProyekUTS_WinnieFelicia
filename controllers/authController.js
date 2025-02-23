@@ -25,6 +25,9 @@ const authController = {
         } catch (err) {
             res.status(500).json({ message: 'Login failed' });
         }
+    },
+    logout: (req, res) => {
+        res.json({ message: 'Logout successful' });
     }
 };
 
