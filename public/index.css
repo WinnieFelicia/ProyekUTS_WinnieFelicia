@@ -1,18 +1,54 @@
+body {
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .container {
-    margin: 20px auto; 
+    margin: 20px auto;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    max-width: 800px; 
-    width: 90%; 
+    max-width: 800px;
+    width: 90%;
     box-sizing: border-box;
+    background-color: white;
 }
 
 .hidden {
     display: none;
 }
 
-input,select,button {
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fefefe;
+    color: white;
+    padding: 5px 10px;
+    max-height: 50px;
+    border-radius: 5px;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    width: 10%;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}
+
+input,
+select,
+button {
     margin: 5px 0;
     padding: 8px;
     width: 100%;
@@ -25,6 +61,53 @@ button {
 
 a {
     cursor: pointer;
-    color: blue;
+    color: rgb(9, 9, 9);
     text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+}
+
+p {
+    text-align: center;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#filter {
+    padding: 5px;
+    font-size: 14px;
+    width: 120px;
+    margin-left: 500px;
+}
+
+.buttonfilter {
+    padding: 5px 8px;
+    font-size: 14px;
+    width: 30%;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#task-table {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#task-table th,
+#task-table td {
+    text-align: left;
+    padding: 10px;
+}
+
+#task-table th {
+    background-color: #f4f4f4;
 }

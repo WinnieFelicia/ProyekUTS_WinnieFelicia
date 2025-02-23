@@ -136,35 +136,49 @@ function addTask() {
   .catch(err => console.error("Gagal menambahkan tugas:", err));
 }
 
-function editTask(taskId) {
-  const token = localStorage.getItem("token");
-  const newTitle = prompt("Masukkan judul baru:");
-  const newCategory = prompt("Masukkan kategori baru:");
-  const newDeadline = prompt("Masukkan deadline baru (YYYY-MM-DD):");
-  const newStatus = confirm("Apakah tugas sudah selesai?") ? "Selesai" : "Belum Selesai";
+let currentTaskId = null;
 
-  if (newTitle && newCategory && newDeadline) {
-    fetch(`/api/tasks/${taskId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token
-      },
-      body: JSON.stringify({
-        title: newTitle,
-        category: newCategory,
-        deadline: newDeadline,
-        status: newStatus
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert("Tugas berhasil diperbarui!");
-      filterTasks(); 
-    })
-    .catch(err => console.error("Gagal memperbarui tugas:", err));
-  }
+function editTask(taskId) {
+  currentTaskId = taskId;
+  document.getElementById("editModal").style.display = "block";
 }
+
+document.getElementById("editForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const token = localStorage.getItem("token");
+  const newTitle = document.getElementById("newTitle").value;
+  const newCategory = document.getElementById("newCategory").value;
+  const newDeadline = document.getElementById("newDeadline").value;
+  const newStatus = document.getElementById("newStatus").checked ? "Selesai" : "Belum Selesai";
+  
+  fetch(`/api/tasks/${currentTaskId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      title: newTitle,
+      category: newCategory,
+      deadline: newDeadline,
+      status: newStatus
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert("Tugas berhasil diperbarui!");
+    closeModal();
+    filterTasks(); 
+  })
+  .catch(err => console.error("Gagal memperbarui tugas:", err));
+});
+
+function closeModal() {
+  document.getElementById("editModal").style.display = "none";
+  document.getElementById("editForm").reset();
+}
+
 
 function deleteTask(taskId) {
   const token = localStorage.getItem("token");
