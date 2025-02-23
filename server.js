@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 const wss = new WebSocket.Server({ port: 8080 });
+let clients = [];
 wss.on("connection", (ws) => {
     console.log("🔗 Client terhubung");
     ws.send("Selamat datang!");
