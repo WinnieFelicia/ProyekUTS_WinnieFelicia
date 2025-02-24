@@ -97,8 +97,12 @@ function filterTasks() {
         <td>${task.deadline}</td>
         <td>${task.status}</td>
         <td>
-          <button onclick="editTask('${task.id}')">Edit</button>
-          <button onclick="deleteTask('${task.id}')">Hapus</button>
+          <button onclick="editTask('${task.id}')">
+          <i class="fa-solid fa-pen-to-square" style="color:rgb(254, 189, 98);"></i>
+          </button>
+          <button onclick="deleteTask('${task.id}')">
+          <i class="fa-solid fa-trash" style="color: #fa3e00;"></i>
+          </button>
         </td>
       `;
         list.appendChild(row);
