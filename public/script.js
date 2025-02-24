@@ -114,6 +114,10 @@ function addTask() {
   const category = document.getElementById("task-category").value;
   const deadline = document.getElementById("task-deadline").value;
 
+  if (!title || !category || !deadline) {
+    return alert("Semua field harus diisi!");
+  }
+
   fetch("/tasks", {
     method: "POST",
     headers: {
