@@ -210,3 +210,8 @@ window.onload = function () {
     showRegister();
   }
 };
+
+const socket = new WebSocket("ws://localhost:8080");
+socket.onmessage = (event) => {
+  console.log("Pesan dari server:", event.data);
+};
