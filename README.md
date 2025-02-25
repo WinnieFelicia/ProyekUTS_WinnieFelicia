@@ -1,3 +1,6 @@
+Link Github :
+https://github.com/WinnieFelicia/ProyekUTS_WinnieFelicia.git
+
 Cara Mengatur Database :
 - install mysql2 pada terminal, dengan npm install mysql2
 - Membuka localhost/phypmyadmin
